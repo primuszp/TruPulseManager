@@ -410,10 +410,12 @@ namespace TruPulseManager
 
         private void SortCoordinates(double[] x, double[] y)
         {
-            for (int i = 0; i < x.Length; i++)
+            for (int i = 0; i < x.Length - 1; i++)
             {
-                if (x[i] < x[i + 1])
+                if (x[i] > x[i + 1])
                 {
+                    double tmpX = x[i]; x[i] = x[i + 1]; x[i + 1] = tmpX;
+                    double tmpY = y[i]; y[i] = y[i + 1]; y[i + 1] = tmpY;
                 }
             }
         }

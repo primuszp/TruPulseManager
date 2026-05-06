@@ -749,11 +749,12 @@ namespace TruPulseManager
             info.AddValue("Y", y);
             info.AddValue("Z", z);
         }
-        public Vector(SerializationInfo info, StreamingContext context) 
+        public Vector(SerializationInfo info, StreamingContext context)
         {
             x = info.GetDouble("X");
             y = info.GetDouble("Y");
             z = info.GetDouble("Z");
+            magnitude = Lenght();
         }
 
         #endregion

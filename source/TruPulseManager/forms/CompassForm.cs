@@ -48,7 +48,7 @@ namespace TruPulseManager
             {
                 SendCommand("$ST");
                 SendCommand("$TM,0");
-                measure = true;
+                measure = false;
             }
         }
 

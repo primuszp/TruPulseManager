@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.IO.Ports;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace TruPulseManager
@@ -22,6 +23,16 @@ namespace TruPulseManager
         public FastStore()
         {
             InitializeComponent();
+            LoadImageList();
+        }
+
+        private void LoadImageList()
+        {
+            var asm = Assembly.GetExecutingAssembly();
+            using var collapse = asm.GetManifestResourceStream("TruPulseManager.picture.collapse.png");
+            using var expand   = asm.GetManifestResourceStream("TruPulseManager.picture.expand.png");
+            if (collapse != null) imageList.Images.Add("collapse.png", Image.FromStream(collapse));
+            if (expand   != null) imageList.Images.Add("expand.png",   Image.FromStream(expand));
         }
 
         public void CalcCoordinates(HVMessage hvMessage)

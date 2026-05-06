@@ -10,12 +10,16 @@
     <Nullable>disable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ImplicitUsings>disable</ImplicitUsings>
-    <NoWarn>$(NoWarn);SYSLIB0011;NU1701;NETSDK1187</NoWarn>
-    <GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
+    <NoWarn>$(NoWarn);SYSLIB0011</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ZedGraph" Version="5.1.7" />
+    <EmbeddedResource Include="picture\collapse.png" />
+    <EmbeddedResource Include="picture\expand.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OxyPlot.WindowsForms" Version="2.2.0" />
     <PackageReference Include="System.IO.Ports" Version="9.0.5" />
   </ItemGroup>
 

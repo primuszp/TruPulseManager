@@ -142,30 +142,20 @@ namespace TruPulseManager
         private void HandleTruPulse(object sender, EventArgs e)
         {
             string buffer = serialPort.ReadExisting();
+            if (string.IsNullOrEmpty(buffer)) return;
 
-            if (!string.IsNullOrEmpty(buffer))
+            instring = (instring ?? "") + buffer;
+
+            // Split on \n: every element except the last is a complete line
+            string[] lines = instring.Split('\n');
+            for (int i = 0; i < lines.Length - 1; i++)
             {
-                if (buffer.StartsWith("$"))
-                {
-                    instring = buffer;
-                }
-                else
-                {
-                    instring = (instring ?? "") + buffer;
-                }
+                string sentence = lines[i].TrimEnd('\r');
+                if (sentence.StartsWith("$"))
+                    TruPulse.Parse(sentence);
             }
-
-            if (instring == null) return;
-
-            truPulseString = instring.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string item in truPulseString)
-            {
-                if ((item.StartsWith("$")) && (item.EndsWith("\r")))
-                {
-                    TruPulse.Parse(item.Trim('\r'));
-                }
-            }
+            // Keep the incomplete trailing fragment for the next chunk
+            instring = lines[lines.Length - 1];
         }
 
         private void TruPulse_HVReceived(HVMessage hv)

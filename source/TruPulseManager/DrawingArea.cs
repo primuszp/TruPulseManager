@@ -27,8 +27,6 @@ namespace TruPulseManager
 
         private int mouseScreenX = 0;
         private int mouseScreenY = 0;
-        private int mouseScreenDownX = 0;
-        private int mouseScreenDownY = 0;
 
         private MouseButtons mouseButton = MouseButtons.None;
 

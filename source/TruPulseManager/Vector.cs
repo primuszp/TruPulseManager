@@ -732,11 +732,6 @@ namespace TruPulseManager
         /// <summary>
         /// A tolarancia mértéke amin belül még két vektor azonosnak vehető
         /// </summary>
-        private static double EqualityTolerence = Double.Epsilon;
-
-        /// <summary>
-        /// Az üzenet megjelenítésre kerül, ha nem megfelelő elemszámú tömböt alkalmazunk
-        /// </summary>
         private static string THREE_COMPONENTS = "A tömbnek pontosan három komponenst kell tartalmaznia (x,y,z)";
 
         #endregion

@@ -25,7 +25,6 @@ namespace TruPulseManager
         #region Private Member Variables
 
         private Interpreter truPulse = new Interpreter();
-        private string[] truPulseString;
         private string instring;
 
         LineItem myCurve = null;

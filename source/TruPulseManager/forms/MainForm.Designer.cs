@@ -480,7 +480,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonZoomAll;
         private System.Windows.Forms.ToolStripStatusLabel tSLCoordinates;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private FastStore fastStore;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private FastStore fastStorePanel;
 

@@ -138,14 +138,10 @@ namespace TruPulseManager
         {
             switch (unit)
             {
-                case "F": return (0.3048 * QualityTarget(double.Parse(value, CultureInfo.InvariantCulture)));
-                    break;
-                case "Y": return (0.9144 * QualityTarget(double.Parse(value, CultureInfo.InvariantCulture)));
-                    break;
-                case "M": return (1.0000 * QualityTarget(double.Parse(value, CultureInfo.InvariantCulture)));
-                    break;
-                default: return (0.0);
-                    break;
+                case "F": return 0.3048 * QualityTarget(double.Parse(value, CultureInfo.InvariantCulture));
+                case "Y": return 0.9144 * QualityTarget(double.Parse(value, CultureInfo.InvariantCulture));
+                case "M": return 1.0000 * QualityTarget(double.Parse(value, CultureInfo.InvariantCulture));
+                default:  return 0.0;
             }
         }
 

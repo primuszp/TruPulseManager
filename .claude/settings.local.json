@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(dotnet package search SlidingScale --source https://api.nuget.org/v3/index.json 2>&1)",
-      "PowerShell(head -10)",
-      "PowerShell(cd \"D:\\\\Repositories\\\\TruPulseManager\\\\.claude\\\\worktrees\\\\eloquent-jepsen-37ba02\\\\source\\\\TruPulseManager\"; dotnet build 2>&1 | Where-Object { $_ -match \"error|Error\" })"
-    ]
-  }
-}

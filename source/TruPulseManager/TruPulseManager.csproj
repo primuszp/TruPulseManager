@@ -10,7 +10,8 @@
     <Nullable>disable</Nullable>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <ImplicitUsings>disable</ImplicitUsings>
-    <NoWarn>$(NoWarn);SYSLIB0011</NoWarn>
+    <NoWarn>$(NoWarn);SYSLIB0011;NU1701;NETSDK1187</NoWarn>
+    <GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
   </PropertyGroup>
 
   <ItemGroup>

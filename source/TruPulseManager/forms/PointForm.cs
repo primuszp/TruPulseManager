@@ -129,7 +129,7 @@ namespace TruPulseManager
 
         private void nUpDownHeight_Click(object sender, EventArgs e)
         {
-            keyboard.CodeText = tBCode.Text;
+            keyboard.CodeText = nUpDownHeight.Value.ToString();
             keyboard.ShowDialog();
 
             try

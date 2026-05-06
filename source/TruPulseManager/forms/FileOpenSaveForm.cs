@@ -83,25 +83,25 @@ namespace TruPulseManager
                 openFileDialog.Filter = "TXT File|*.txt";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    StreamReader myFile = File.OpenText(openFileDialog.FileName);
-                    
-                    MeasuredPoint myPoint = null;
-                    string buffer = null;
-                    string[] split = null;
-
-                    while ((buffer = myFile.ReadLine()) != null)
+                    using (StreamReader myFile = File.OpenText(openFileDialog.FileName))
                     {
-                        split = buffer.Split(new Char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                        MeasuredPoint myPoint = null;
+                        string buffer = null;
+                        string[] split = null;
 
-                        myPoint = new MeasuredPoint();
-                        myPoint.ID = Convert.ToInt32(split[0]);
-                        myPoint.Coordinates.X = Convert.ToDouble(split[1]);
-                        myPoint.Coordinates.Y = Convert.ToDouble(split[2]);
-                        myPoint.Coordinates.Z = Convert.ToDouble(split[3]);
-                        myPoint.Code = split[4];
-                        Project.MeasurePoints.Add(myPoint);
+                        while ((buffer = myFile.ReadLine()) != null)
+                        {
+                            split = buffer.Split(new Char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries);
+
+                            myPoint = new MeasuredPoint();
+                            myPoint.ID = Convert.ToInt32(split[0]);
+                            myPoint.Coordinates.X = Convert.ToDouble(split[1]);
+                            myPoint.Coordinates.Y = Convert.ToDouble(split[2]);
+                            myPoint.Coordinates.Z = Convert.ToDouble(split[3]);
+                            myPoint.Code = split[4];
+                            Project.MeasurePoints.Add(myPoint);
+                        }
                     }
-                    myFile.Close();
                 }
             }
        }
@@ -122,24 +122,21 @@ namespace TruPulseManager
 
         private void btnTXTExport_Click(object sender, EventArgs e)
         {
-            StreamWriter myFile = new StreamWriter(Project.Name + ".txt");
-
-            foreach (MeasuredPoint item in Project.MeasurePoints)
+            using (StreamWriter myFile = new StreamWriter(Project.Name + ".txt"))
             {
+                foreach (MeasuredPoint item in Project.MeasurePoints)
+                {
                     myFile.WriteLine(item.ID + "\t" + item.Coordinates.X + "\t" + item.Coordinates.Y + "\t" + item.Coordinates.Z + "\t" + item.Code);
+                }
             }
 
-            myFile.Close();
-
-
-            StreamWriter file = new StreamWriter("stations"+ ".txt");
-
-            foreach (MeasuredPoint item in Project.MeasurePoints)
+            using (StreamWriter file = new StreamWriter("stations" + ".txt"))
             {
-                file.WriteLine(item.ID + "\t" + item.MeasuredValues.SlopeDistance + "\t" + item.MeasuredValues.Azimuth + "\t" + item.MeasuredValues.Inclination + "\t" + item.Code);
+                foreach (MeasuredPoint item in Project.MeasurePoints)
+                {
+                    file.WriteLine(item.ID + "\t" + item.MeasuredValues.SlopeDistance + "\t" + item.MeasuredValues.Azimuth + "\t" + item.MeasuredValues.Inclination + "\t" + item.Code);
+                }
             }
-
-            file.Close();
         }
     }
 }

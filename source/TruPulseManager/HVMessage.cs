@@ -104,9 +104,10 @@ namespace TruPulseManager
 
         private void HVInterpreter(string sentence)
         {
-            if (sentence.IndexOf('*') > 0)
+            int starIndex = sentence.IndexOf('*');
+            if (starIndex > 0)
             {
-                sentence = sentence.Substring(0, sentence.IndexOf('*'));
+                sentence = sentence.Substring(0, starIndex);
             }
 
             //Split into an array of strings

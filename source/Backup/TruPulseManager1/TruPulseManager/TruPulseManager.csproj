@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{33D93B55-115A-46EC-9B67-7B9072A56962}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TruPulseManager</RootNamespace>
+    <AssemblyName>TruPulseManager</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SlidingScale, Version=1.0.3203.16845, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\AppData\Local\Temp\Rar$DR04.480\bin\SlidingScale.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="forms\CrossSectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\CrossSectionForm.Designer.cs">
+      <DependentUpon>CrossSectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\CompassForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\CompassForm.Designer.cs">
+      <DependentUpon>CompassForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrossSection.cs" />
+    <Compile Include="forms\BatteryBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\BatteryBarForm.Designer.cs">
+      <DependentUpon>BatteryBarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DrawingArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DrawingArea.Designer.cs">
+      <DependentUpon>DrawingArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HVMessage.cs" />
+    <Compile Include="Interpreter.cs" />
+    <Compile Include="forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\KeyBoardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\KeyBoardForm.Designer.cs">
+      <DependentUpon>KeyBoardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeasuredPoint.cs" />
+    <Compile Include="forms\MeasureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\MeasureForm.Designer.cs">
+      <DependentUpon>MeasureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\PointForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\PointForm.Designer.cs">
+      <DependentUpon>PointForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\CrossSectionForm.resx">
+      <DependentUpon>CrossSectionForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\CompassForm.resx">
+      <DependentUpon>CompassForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\BatteryBarForm.resx">
+      <DependentUpon>BatteryBarForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DrawingArea.resx">
+      <DependentUpon>DrawingArea.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\MeasureForm.resx">
+      <DependentUpon>MeasureForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\PointForm.resx">
+      <DependentUpon>PointForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\StationSetupForm.resx">
+      <DependentUpon>StationSetupForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\KeyBoardForm.resx">
+      <DependentUpon>KeyBoardForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\SerialPortForm.resx">
+      <DependentUpon>SerialPortForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="forms\SerialPortForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\SerialPortForm.Designer.cs">
+      <DependentUpon>SerialPortForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Station.cs" />
+    <Compile Include="forms\StationSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\StationSetupForm.Designer.cs">
+      <DependentUpon>StationSetupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\connecting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\serialport.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\disconnect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\dialogok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\battery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\measure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\greenflag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\zoomin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\zoomout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\pan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\crosssection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\stationsetup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\compass.png" />
+    <None Include="Properties\DataSources\CrossSection.datasource" />
+    <None Include="Properties\DataSources\CrossSection1.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\insert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\newcrosssection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="picture\zoomall.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

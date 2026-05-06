@@ -1,0 +1,43 @@
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+*.DS_Store
+*.vsidx
+*.log
+*.pdb
+*.cache
+*.nupkg
+packages/
+*.TestResults/
+*.NETCoreApp*
+# Rider/JetBrains
+.idea/
+*.sln.iml
+# Visual Studio temporary files
+*_ReSharper*/
+_ReSharper*/
+*.dotCover
+
+# Ignore build outputs
+src/**/bin/
+src/**/obj/
+
+# Ignore Visual Studio Code workspace settings
+.vscode/
+
+# NuGet
+.nuget/
+*.nupkg
+
+# User-specific files
+*.user
+*.userprefs
+
+# VS generated database files
+*.mdf
+*.ldf

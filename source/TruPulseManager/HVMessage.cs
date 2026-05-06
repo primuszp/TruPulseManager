@@ -110,8 +110,9 @@ namespace TruPulseManager
                 sentence = sentence.Substring(0, starIndex);
             }
 
-            //Split into an array of strings
             string[] split = sentence.Split(new Char[] { ',' });
+
+            if (split.Length < 10) return;
 
             for (int i = 0; i < split.Length; i++)
             {
@@ -121,16 +122,9 @@ namespace TruPulseManager
                 }
             }
 
-            //Calculated Horizontal Distance Meter
             hdistance = DistanceConvertToSI(split[2], split[3]);
-
-            //Measured Azimuth Degree
             azimuth = double.Parse(split[4], CultureInfo.InvariantCulture);
-
-            //Measured Inclination Degree
             inclination = double.Parse(split[6], CultureInfo.InvariantCulture);
-
-            //Measured Slope Distance Meter
             sdistance = DistanceConvertToSI(split[8], split[9]);
         }
 
@@ -157,17 +151,8 @@ namespace TruPulseManager
 
         private double QualityTarget(double value)
         {
-            double delta = 0.0;
-
-            if ((Math.Abs(Math.Round(value, 1) - value)) == delta)
-            {
-                highQualityTarget = true;
-            }
-            else
-            {
-                highQualityTarget = false;
-            }
-            return (value);
+            highQualityTarget = Math.Abs(Math.Round(value, 1) - value) < 1e-9;
+            return value;
         }
 
         #endregion

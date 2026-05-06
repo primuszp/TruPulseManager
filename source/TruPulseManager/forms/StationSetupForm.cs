@@ -91,7 +91,7 @@ namespace TruPulseManager
                 Project.Station.Height = station.Height;
                 Project.StationPoints.Add(station);
 
-                MeasuredPoint measuredPoint = new MeasuredPoint(station.Coordinates, station.ID, station.Code, station.Height);
+                MeasuredPoint measuredPoint = new MeasuredPoint(station.Coordinates, station.ID, station.Code, 0);
                 Project.MeasurePoints.Add(measuredPoint);
 
                 PointSetup = false;

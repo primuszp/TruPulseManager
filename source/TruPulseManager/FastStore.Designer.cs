@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FastStore));
             this.panel = new System.Windows.Forms.Panel();
             this.btnShift = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
@@ -84,11 +83,9 @@
             this.btnShift.Click += new System.EventHandler(this.buttonShift_Click);
             // 
             // imageList
-            // 
-            this.imageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList.ImageStream")));
+            //
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList.Images.SetKeyName(0, "collapse.png");
-            this.imageList.Images.SetKeyName(1, "expand.png");
+            this.imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
             // 
             // tableLayoutPanel1
             // 

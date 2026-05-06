@@ -40,7 +40,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.lBSections = new System.Windows.Forms.ListBox();
-            this.zedGraphControl = new ZedGraph.ZedGraphControl();
+            this.plotView = new OxyPlot.WindowsForms.PlotView();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -178,7 +178,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.20513F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 76.79487F));
             this.tableLayoutPanel.Controls.Add(this.lBSections, 0, 0);
-            this.tableLayoutPanel.Controls.Add(this.zedGraphControl, 1, 0);
+            this.tableLayoutPanel.Controls.Add(this.plotView, 1, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -198,22 +198,15 @@
             this.lBSections.Size = new System.Drawing.Size(172, 304);
             this.lBSections.TabIndex = 0;
             this.lBSections.SelectedIndexChanged += new System.EventHandler(this.lBSections_SelectedIndexChanged);
-            // 
-            // zedGraphControl
-            // 
-            this.zedGraphControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zedGraphControl.Location = new System.Drawing.Point(182, 4);
-            this.zedGraphControl.Margin = new System.Windows.Forms.Padding(4);
-            this.zedGraphControl.Name = "zedGraphControl";
-            this.zedGraphControl.ScrollGrace = 0;
-            this.zedGraphControl.ScrollMaxX = 0;
-            this.zedGraphControl.ScrollMaxY = 0;
-            this.zedGraphControl.ScrollMaxY2 = 0;
-            this.zedGraphControl.ScrollMinX = 0;
-            this.zedGraphControl.ScrollMinY = 0;
-            this.zedGraphControl.ScrollMinY2 = 0;
-            this.zedGraphControl.Size = new System.Drawing.Size(584, 307);
-            this.zedGraphControl.TabIndex = 2;
+            //
+            // plotView
+            //
+            this.plotView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.plotView.Location = new System.Drawing.Point(182, 4);
+            this.plotView.Margin = new System.Windows.Forms.Padding(4);
+            this.plotView.Name = "plotView";
+            this.plotView.Size = new System.Drawing.Size(584, 307);
+            this.plotView.TabIndex = 2;
             // 
             // toolStrip
             // 
@@ -476,7 +469,7 @@
         private System.Windows.Forms.ToolStripButton toolStripCompass;
         private System.Windows.Forms.ListBox lBSections;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private ZedGraph.ZedGraphControl zedGraphControl;
+        private OxyPlot.WindowsForms.PlotView plotView;
         private System.Windows.Forms.ToolStripButton toolStripButtonZoomAll;
         private System.Windows.Forms.ToolStripStatusLabel tSLCoordinates;
         private System.Windows.Forms.StatusStrip statusStrip;

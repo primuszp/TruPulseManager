@@ -4,7 +4,6 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Windows.Forms;
-using ZedGraph;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TruPulseManager
@@ -27,8 +26,6 @@ namespace TruPulseManager
         private Interpreter truPulse = new Interpreter();
         private string instring;
 
-        LineItem myCurve = null;
-        GraphPane myPane = null;
 
         public SerialPort SerialPort
         {
@@ -313,93 +310,44 @@ namespace TruPulseManager
         private void tabPage2_Leave(object sender, EventArgs e)
         {
             lBSections.Items.Clear();
-
-            if (myPane != null)
-            {
-                myPane.CurveList.Clear();
-                myPane.GraphObjList.Clear();
-            }
-            if (myCurve != null) myCurve.Clear();
+            plotView.Model = null;
         }
-
 
         private void lBSections_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (myPane != null)
-            {
-                myPane.CurveList.Clear();
-                myPane.GraphObjList.Clear();
-            }
-            if (myCurve != null) myCurve.Clear();
-
             GetSectionPoints(lBSections.SelectedIndex);
-            zedGraphControl.Refresh();
         }
 
         private void GetSectionPoints(int index)
         {
-            double[] x = null;
-            double[] y = null;
+            if (index < 0) return;
 
-            List<PointD> points = new List<PointD>();
-
-            myPane = zedGraphControl.GraphPane;
-
-            if (index >= 0)
+            List<MeasuredPoint> temp = new List<MeasuredPoint>();
+            for (int i = 0; i < Project.CrossSections[index].Indices.Count; i++)
             {
-                x = new double[Project.CrossSections[index].Indices.Count];
-                y = new double[Project.CrossSections[index].Indices.Count];
-
-                List<MeasuredPoint> temp = new List<MeasuredPoint>();
-
-                for (int i = 0; i < Project.CrossSections[index].Indices.Count; i++)
-                {
-                    int ptr = Project.GetMeasuredPoint(Project.CrossSections[index].Indices[i]);
-
-                    if (ptr >= 0)
-                    {
-                        temp.Add(Project.MeasurePoints[ptr]);
-                    }
-                }
-
-                temp.Sort();
-
-                for (int i = 0; i < temp.Count; i++)
-                {
-                    x[i] = temp[i].Coordinates.X;
-                    y[i] = temp[i].Coordinates.Z;
-                }
-
-                temp.Clear();
-
-                if (x.Length > 0 && y.Length > 0)
-                {
-                    double xMin = GetMin(x);
-                    double xMax = GetMax(x);
-
-                    double yMin = GetMin(y);
-                    double yMax = GetMax(y);
-
-                    myPane.XAxis.Scale.Max = xMax;
-                    myPane.YAxis.Scale.Max = yMax;
-                    myPane.XAxis.Scale.Min = xMin;
-                    myPane.YAxis.Scale.Min = yMin;
-
-                    myPane.XAxis.Scale.MajorStep = (xMax - xMin) / 10.0;
-                    myPane.YAxis.Scale.MajorStep = (yMax - yMin) / 10.0;
-
-                    myPane.XAxis.Scale.MinorStep = 2.0;
-                    myPane.YAxis.Scale.MinorStep = 2.0;
-
-                    myCurve = myPane.AddCurve(Project.CrossSections[index].Section.ToString("00+00.00"), x, y, Color.Chocolate, SymbolType.Circle);
-                    myCurve.Line.Width = 6.0F;
-
-                    myCurve.Line.Fill = new Fill(Color.FromArgb(60, 190, 50), Color.ForestGreen, Color.Green);
-
-                    myCurve.Symbol.Fill = new Fill(Color.Orange);
-                    myCurve.Symbol.Size = 8.0F;
-                }
+                int ptr = Project.GetMeasuredPoint(Project.CrossSections[index].Indices[i]);
+                if (ptr >= 0)
+                    temp.Add(Project.MeasurePoints[ptr]);
             }
+            temp.Sort();
+            if (temp.Count == 0) return;
+
+            string label = Project.CrossSections[index].Section.ToString("00+00.00");
+            var model = new OxyPlot.PlotModel { Title = label };
+            var series = new OxyPlot.Series.LineSeries
+            {
+                Title = label,
+                StrokeThickness = 6,
+                Color = OxyPlot.OxyColor.FromArgb(255, 210, 105, 30),
+                MarkerType = OxyPlot.MarkerType.Circle,
+                MarkerSize = 8,
+                MarkerFill = OxyPlot.OxyColors.Orange
+            };
+            foreach (MeasuredPoint mp in temp)
+                series.Points.Add(new OxyPlot.DataPoint(mp.Coordinates.X, mp.Coordinates.Z));
+
+            model.Series.Add(series);
+            plotView.Model = model;
         }
 
         private void SortCoordinates(double[] x, double[] y)

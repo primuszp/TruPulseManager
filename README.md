@@ -152,7 +152,7 @@ source/
 
 ## Developed by
 
-**Institute of Geomatics and Forest Engineering**  
+**Institute of Geomatics and Civil Engineering**  
 University of Sopron  
 Sopron, Hungary  
 [uni-sopron.hu](https://uni-sopron.hu)

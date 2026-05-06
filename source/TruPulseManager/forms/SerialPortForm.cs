@@ -93,6 +93,8 @@ namespace TruPulseManager
 
         private void buttonOpenPort_Click(object sender, EventArgs e)
         {
+            if (cmbComSelect.SelectedIndex < 0) return;
+
             if (SerialPort.IsOpen)
             {
                 SerialPort.Close();

@@ -133,14 +133,17 @@ namespace TruPulseManager
 
         private void serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            this.Invoke(new EventHandler(HandleTruPulse));
+            if (!IsHandleCreated || IsDisposed) return;
+            try { this.Invoke(new EventHandler(HandleTruPulse)); }
+            catch (ObjectDisposedException) { }
+            catch (InvalidOperationException) { }
         }
 
         private void HandleTruPulse(object sender, EventArgs e)
         {
             string buffer = serialPort.ReadExisting();
 
-            if (buffer != null)
+            if (!string.IsNullOrEmpty(buffer))
             {
                 if (buffer.StartsWith("$"))
                 {
@@ -148,9 +151,11 @@ namespace TruPulseManager
                 }
                 else
                 {
-                    instring += buffer;
+                    instring = (instring ?? "") + buffer;
                 }
             }
+
+            if (instring == null) return;
 
             truPulseString = instring.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 

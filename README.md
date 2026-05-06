@@ -1,6 +1,6 @@
 # TruPulse Manager
 
-A Windows desktop application for field data collection and management using the [Laser Technology TruPulse 360B](https://www.manualslib.com/products/Laser-Technology-Trupulse-360b-8935479.html) laser rangefinder. Developed by the **Institute of Geomatics and Forest Engineering, University of Sopron** for forestry road survey and terrain profiling workflows.
+A Windows desktop application for field data collection and management using the [Laser Technology TruPulse 360B](https://www.manualslib.com/products/Laser-Technology-Trupulse-360b-8935479.html) laser rangefinder. Developed by the **Institute of Geomatics and Civil Engineering, University of Sopron** for forestry road survey and terrain profiling workflows.
 
 ---
 
@@ -152,7 +152,7 @@ source/
 
 ## Developed by
 
-**Institute of Geomatics and Forest Engineering**  
+**Institute of Geomatics and Civil Engineering**  
 University of Sopron  
 Sopron, Hungary  
 [uni-sopron.hu](https://uni-sopron.hu)
